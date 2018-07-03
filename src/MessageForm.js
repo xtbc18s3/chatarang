@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 
 class MessageForm extends Component {
+  handleSubmit = (ev) => {
+    ev.preventDefault()
+    this.props.addMessage()
+  }
+
   render() {
     return (
-      <form className="MessageForm">
+      <form
+        className="MessageForm"
+        onSubmit={this.handleSubmit}
+      >
         <input
           type="text"
           name="body"
