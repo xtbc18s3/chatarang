@@ -10,19 +10,35 @@ class Chat extends Component {
 
     this.state = {
       messages: [
-        { id: 1, userName: 'eli', body: 'I, too, enjoy chatting.' },
-        { id: 2, userName: 'dpalazzo', body: 'This guy is so hip. I love my job.' },
+        {
+            id: 1,
+            user: {
+              uid: 123,
+              displayName: 'Davey',
+              email: 'davey@fretless.com',
+            },
+            body: 'I enjoy chatting.',
+        },
+        {
+          id: 2,
+          user: {
+            uid: 456,
+            displayName: 'Dana',
+            email: 'dana@fretless.com',
+          },
+          body: 'This guy is so hip. I love my job.',
+        },
       ],
     }
   }
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
-    const userName = 'daniel'
+    const user = this.props.user
 
     messages.push({
-      id: `${userName}-${Date.now()}`,
-      userName,
+      id: `${user.uid}-${Date.now()}`,
+      user,
       body,
     })
 
