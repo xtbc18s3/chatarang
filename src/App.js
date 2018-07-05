@@ -11,7 +11,7 @@ class App extends Component {
       user: {
         uid: 'SDKfh32948',
         displayName: 'Davey',
-        email: 'davey@fretless.com',
+        email: 'dave@fretless.com',
       }
     }
   }
