@@ -4,8 +4,6 @@ The final project for Xtern Bootcamp 2018 Session 3. Based on [Davey's version](
 
 ## Day 7 Homework
 
-ALL HYPER FIGHTING, ALL THE TIME!
-
 * Add the [re-base](https://github.com/tylermcginnis/re-base) package to your project. At the command-line, type:
 
 ```shell
@@ -19,6 +17,10 @@ Confirm that `re-base` is now listed under `dependencies` in `package.json`.
 _Hint_: `export default Rebase.createClass(db)`
 
 * Use [`base.syncState()`](https://github.com/tylermcginnis/re-base#syncstateendpoint-options) to sync your messages with Firebase.
+
+### Super Mega Bonus Credit Hyper Fighting
+
+* Try to make authentication work with Firebase!
 
 ## Day 6 Homework
 
