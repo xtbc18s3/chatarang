@@ -2,7 +2,7 @@ import React from 'react'
 
 import Message from './Message'
 
-const MessageList = (props) => {
+const MessageList = ({ messages }) => {
   return (
     <div
       className="MessageList"
@@ -19,8 +19,11 @@ const MessageList = (props) => {
       </div>
 
       {
-        props.messages.map(msg => (
-          <Message message={msg} key={msg.id} />
+        messages.map(msg => (
+          <Message
+            message={msg}
+            key={msg.id}
+          />
         ))
       }
     </div>
