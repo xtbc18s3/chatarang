@@ -8,13 +8,16 @@ class App extends Component {
   constructor() {
     super()
 
+    const user = JSON.parse(localStorage.getItem('user'))
+
     this.state = {
-      user: {},
+      user: user || {},
     }
   }
 
   handleAuth = (user) => {
     this.setState({ user })
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   signedIn = () => {
@@ -23,6 +26,7 @@ class App extends Component {
 
   signOut = () => {
     this.setState({ user: {} })
+    localStorage.removeItem('user')
   }
 
   render() {
