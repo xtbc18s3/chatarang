@@ -2,6 +2,22 @@
 
 The final project for Xtern Bootcamp 2018 Session 3. Based on [Davey's version](https://github.com/xtbc18s3/chatarang).
 
+## Day 8 Homework
+
+* Set the current room when you click a room in the sidebar.
+
+### Bonus Credit
+
+* Sync the list of rooms with Firebase (using `base.syncState()`).
+
+### Super Mega Bonus Credit
+
+* Sync each room's messages separately.
+
+### Super Mega Bonus Credit Hyper Fighting
+
+* Add a form to create new rooms.
+
 ## Day 7 Homework
 
 * Add the [re-base](https://github.com/tylermcginnis/re-base) package to your project. At the command-line, type:
