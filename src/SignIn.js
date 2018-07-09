@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import { auth, googleProvider } from './base'
+import { auth, googleProvider, githubProvider } from './base'
 
 class SignIn extends Component {
   state = {
     email: '',
   }
 
-  authenticate = () => {
-    auth.signInWithPopup(googleProvider)
+  authenticate = (provider) => {
+    auth.signInWithPopup(provider)
   }
 
   // handleChange = (ev) => {
@@ -63,9 +63,17 @@ class SignIn extends Component {
             <button
               type="button"
               className={css(styles.button)}
-              onClick={this.authenticate}
+              onClick={() => this.authenticate(googleProvider)}
             >
               Sign in with Google
+            </button>
+
+            <button
+              type="button"
+              className={css(styles.button)}
+              onClick={() => this.authenticate(githubProvider)}
+            >
+              Sign in with GitHub
             </button>
           </form>
 
