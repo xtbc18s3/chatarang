@@ -10,29 +10,20 @@ class SignIn extends Component {
 
   authenticate = () => {
     auth.signInWithPopup(googleProvider)
-      .then(result => {
-        const { user } = result
-        this.props.handleAuth({
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL,
-        })
-      })
   }
 
-  handleChange = (ev) => {
-    this.setState({ email: ev.target.value })
-  }
+  // handleChange = (ev) => {
+  //   this.setState({ email: ev.target.value })
+  // }
 
-  handleSubmit = (ev) => {
-    ev.preventDefault()
-    this.props.handleAuth({
-      uid: `${this.state.email}-ksdfjhu32472398`,
-      displayName: this.state.email,
-      email: this.state.email,
-    })
-  }
+  // handleSubmit = (ev) => {
+  //   ev.preventDefault()
+  //   this.props.handleAuth({
+  //     uid: `${this.state.email}-ksdfjhu32472398`,
+  //     displayName: this.state.email,
+  //     email: this.state.email,
+  //   })
+  // }
 
   render() {
     return (
