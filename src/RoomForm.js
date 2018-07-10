@@ -15,12 +15,19 @@ class RoomForm extends Component {
     this.setState({ room })
   }
 
+  handleSubmit = ev => {
+    ev.preventDefault()
+    this.props.addRoom(this.state.room)
+  }
+
   render() {
     return (
       <div className="RoomForm">
         <main>
           <h2>Create a room</h2>
-          <form>
+          <form
+            onSubmit={this.handleSubmit}
+          >
             <p>
               <label htmlFor="name">
                 Room Name
