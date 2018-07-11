@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import './App.css'
 import { auth } from './base'
@@ -57,14 +58,34 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {
-          this.signedIn()
-            ? <Main
-                user={this.state.user}
-                signOut={this.signOut}
-              />
-            : <SignIn />
-        }
+        <Switch>
+          <Route
+            path="/sign-in"
+            render={() => (
+              this.signedIn()
+                ? <Redirect to="/chat" />
+                : <SignIn />
+            )}
+          />
+          <Route
+            path="/chat"
+            render={() => (
+              this.signedIn()
+                ? <Main
+                    user={this.state.user}
+                    signOut={this.signOut}
+                  />
+                : <Redirect to="/sign-in" />
+            )}
+          />
+          <Route
+            render={() => (
+              this.signedIn()
+                ? <Redirect to="/chat" />
+                : <Redirect to="/sign-in" />
+            )}
+          />
+        </Switch>
       </div>
     )
   }
