@@ -57,6 +57,15 @@ class Main extends Component {
     this.setState({ rooms })
   }
 
+  removeRoom = roomName => {
+    const rooms = {...this.state.rooms}
+    rooms[roomName] = null
+    this.setState(
+      { rooms },
+      this.loadValidRoom
+    )
+  }
+
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName]
 
@@ -100,6 +109,7 @@ class Main extends Component {
                 <Chat
                   user={this.props.user}
                   room={this.state.room}
+                  removeRoom={this.removeRoom}
                 />
               </Fragment>
             )}
