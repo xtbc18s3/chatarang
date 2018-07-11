@@ -8,6 +8,7 @@ class SignUp extends Component {
   state = {
     email: '',
     password: '',
+    passwordConfirmation: '',
     errorMessage: null,
   }
 
@@ -20,9 +21,19 @@ class SignUp extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    auth
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .catch(error => this.setState({ errorMessage: error.message }))
+    if (this.passwordsMatch()) {
+      auth
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .catch(error => this.setState({ errorMessage: error.message }))
+    }
+  }
+
+  passwordsMatch = () => {
+    if (this.state.password !== this.state.passwordConfirmation) {
+      this.setState({ errorMessage: 'The passwords you entered do not match.' })
+      return false
+    }
+    return true
   }
 
   render() {
@@ -54,12 +65,32 @@ class SignUp extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
+            <label
+              htmlFor="password"
+              className={css(styles.label)}
+            >
+              Password
+            </label>
             <input
-              autoFocus
+              required
               type="password"
               name="password"
               className={css(styles.input)}
               value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <label
+              htmlFor="passwordConfirmation"
+              className={css(styles.label)}
+            >
+              Re-type Password
+            </label>
+            <input
+              required
+              type="password"
+              name="passwordConfirmation"
+              className={css(styles.input)}
+              value={this.state.passwordConfirmation}
               onChange={this.handleChange}
             />
             <button
