@@ -101,7 +101,7 @@ class SignIn extends Component {
 
               <button
                 type="button"
-                className={css(styles.button, styles.githubr)}
+                className={css(styles.button, styles.github)}
                 onClick={() => this.authenticate(githubProvider)}
               >
                 <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>

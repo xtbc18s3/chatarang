@@ -9,6 +9,7 @@ class SignUp extends Component {
     email: '',
     password: '',
     passwordConfirmation: '',
+    displayName: '',
     errorMessage: null,
   }
 
@@ -24,6 +25,13 @@ class SignUp extends Component {
     if (this.passwordsMatch()) {
       auth
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          if (this.state.displayName) {
+            this.props.updateUser({
+              displayName: this.state.displayName,
+            })
+          }
+        })
         .catch(error => this.setState({ errorMessage: error.message }))
     }
   }
@@ -65,6 +73,22 @@ class SignUp extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
+
+            <label
+              htmlFor="displayName"
+              className={css(styles.label)}
+            >
+              Display Name (optional)
+            </label>
+            <input
+              autoFocus
+              type="text"
+              name="displayName"
+              className={css(styles.input)}
+              value={this.state.displayName}
+              onChange={this.handleChange}
+            />
+
             <label
               htmlFor="password"
               className={css(styles.label)}
