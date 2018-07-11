@@ -45,7 +45,9 @@ class Main extends Component {
 
   setRoomFromRoute = () => {
     const { roomName } = this.props.match.params
-    this.setCurrentRoom(roomName)
+    if (roomName) {
+      this.setCurrentRoom(roomName)
+    }
   }
 
   addRoom = room => {
@@ -57,7 +59,20 @@ class Main extends Component {
 
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName]
-    this.setState({ room })
+
+    if (room) {
+      this.setState({ room })
+    } else {
+      this.loadValidRoom()
+    }
+  }
+
+  loadValidRoom = () => {
+    const roomNames = Object.keys(this.state.rooms)
+    if (roomNames.length > 0) {
+      const roomName = roomNames[0]
+      this.props.history.push(`/chat/rooms/${roomName}`)
+    }
   }
 
   render() {
