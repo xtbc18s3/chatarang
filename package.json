@@ -6,6 +6,7 @@
   "dependencies": {
     "aphrodite": "^2.2.2",
     "firebase": "^5.2.0",
+    "moment": "^2.22.2",
     "re-base": "^3.2.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
