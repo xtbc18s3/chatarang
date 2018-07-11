@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import { Link } from 'react-router-dom'
 
 import Room from './Room'
 
-const RoomList = ({ rooms, setCurrentRoom, showRoomForm }) => {
+const RoomList = ({ rooms }) => {
   return (
     <nav
       className={`RoomList ${css(styles.roomList)}`}
@@ -12,19 +13,18 @@ const RoomList = ({ rooms, setCurrentRoom, showRoomForm }) => {
         <h2 className={css(styles.h2)}>
           Rooms
         </h2>
-        <button
+        <Link
           className={css(styles.button)}
-          onClick={showRoomForm}
+          to="/chat/new-room"
         >
           <i className="fas fa-plus-circle" title="Add room"></i>
-        </button>
+        </Link>
       </div>
       <ul className={css(styles.list)}>
         {
           Object.keys(rooms).map(
             roomName => <Room
                           roomName={roomName}
-                          setCurrentRoom={setCurrentRoom}
                           key={roomName}
                         />
           )

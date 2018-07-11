@@ -13,7 +13,6 @@ class Main extends Component {
       description: 'Chat about stuff',
     },
     rooms: {},
-    showRoomForm: false,
   }
 
   componentDidMount() {
@@ -61,24 +60,16 @@ class Main extends Component {
     this.setState({ room })
   }
 
-  showRoomForm = () => {
-    this.setState({ showRoomForm: true })
-  }
-
-  hideRoomForm = () => {
-    this.setState({ showRoomForm: false })
-  }
-
   render() {
     return (
       <div className="Main" style={styles}>
         <Switch>
           <Route
             path="/chat/new-room"
-            render={() => (
+            render={(navProps) => (
               <RoomForm
                 addRoom={this.addRoom}
-                hideRoomForm={this.hideRoomForm}
+                {...navProps}
               />
             )}
           />
@@ -90,8 +81,6 @@ class Main extends Component {
                   user={this.props.user}
                   signOut={this.props.signOut}
                   rooms={this.state.rooms}
-                  setCurrentRoom={this.setCurrentRoom}
-                  showRoomForm={this.showRoomForm}
                 />
                 <Chat
                   user={this.props.user}

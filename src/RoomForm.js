@@ -19,7 +19,7 @@ class RoomForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     this.props.addRoom(this.state.room)
-    this.props.hideRoomForm()
+    this.props.history.goBack()
   }
 
   render() {
@@ -69,7 +69,7 @@ class RoomForm extends Component {
               <button
                 type="button"
                 className={css(styles.button, styles.cancel)}
-                onClick={this.props.hideRoomForm}
+                onClick={this.props.history.goBack}
               >
                 Cancel
               </button>
