@@ -68,12 +68,25 @@ class App extends Component {
             )}
           />
           <Route
-            path="/chat"
-            render={() => (
+            path="/chat/rooms/:roomName"
+            render={(navProps) => (
               this.signedIn()
                 ? <Main
                     user={this.state.user}
                     signOut={this.signOut}
+                    {...navProps}
+                  />
+                : <Redirect to="/sign-in" />
+            )}
+          />
+          <Route
+            path="/chat"
+            render={(navProps) => (
+              this.signedIn()
+                ? <Main
+                    user={this.state.user}
+                    signOut={this.signOut}
+                    {...navProps}
                   />
                 : <Redirect to="/sign-in" />
             )}
